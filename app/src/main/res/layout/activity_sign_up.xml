@@ -104,23 +104,6 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
-        android:id="@+id/restaurantName"
-        android:layout_width="325dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/edittext"
-        android:drawableLeft="@drawable/lock"
-        android:drawablePadding="15dp"
-        android:elevation="5dp"
-        android:ems="10"
-        android:hint="Restaurant Name"
-        android:inputType="text"
-        android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/email"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
-    <EditText
         android:id="@+id/password"
         android:layout_width="325dp"
         android:layout_height="57dp"
@@ -133,9 +116,26 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/restaurantName"
-        app:layout_constraintStart_toStartOf="@+id/restaurantName"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <EditText
+        android:id="@+id/restaurantName"
+        android:layout_width="325dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edittext"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="15dp"
+        android:elevation="5dp"
+        android:ems="10"
+        android:hint="Restaurant Name"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createButton"
@@ -147,7 +147,7 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
 
     <TextView
         android:id="@+id/alreadyHaveAccountButton"
