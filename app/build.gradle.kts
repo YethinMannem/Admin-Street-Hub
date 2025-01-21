@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,4 +75,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")  // Use the latest version
     implementation("com.google.android.gms:play-services-auth:20.7.0") // Google Sign-In dependency
     implementation("com.google.android.gms:play-services-base:18.2.0")
+
+    // glide dependency
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

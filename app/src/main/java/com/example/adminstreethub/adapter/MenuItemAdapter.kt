@@ -1,15 +1,23 @@
 package com.example.adminstreethub.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.adminstreethub.databinding.ItemMenuBinding
+import com.example.adminstreethub.model.AllMenu
+import com.google.firebase.database.DatabaseReference
 
-class AddItemAdapter(private val menuItemName: MutableList<String>, private val menuItemPrice: MutableList<String>, private val menuItemImage: MutableList<Int>):
-    RecyclerView.Adapter<AddItemAdapter.AddItemViewHolder>() {
+class MenuItemAdapter(
+    private val context: Context,
+    private val menuList: ArrayList<AllMenu>,
+    databaseReference: DatabaseReference
+):
+    RecyclerView.Adapter<MenuItemAdapter.AddItemViewHolder>() {
 
-    private val itemQuantities = IntArray(menuItemName.size) { 1 }
+    private val itemQuantities = IntArray(menuList.size) { 1 }
 //    private val itemClickListener: OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddItemViewHolder {
@@ -21,7 +29,7 @@ class AddItemAdapter(private val menuItemName: MutableList<String>, private val 
         holder.bind(position)
     }
 
-    override fun getItemCount(): Int = menuItemName.size
+    override fun getItemCount(): Int = menuList.size
 
     inner class AddItemViewHolder(private val binding: ItemMenuBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -42,10 +50,14 @@ class AddItemAdapter(private val menuItemName: MutableList<String>, private val 
 //        }
         fun bind(position: Int) {
             binding.apply {
-                allmenuFoodName.text = menuItemName[position]
-                allMenuFoodPrice.text = menuItemPrice[position]
-                allMenuFoodImage.setImageResource(menuItemImage[position])
-
+                val quantity = itemQuantities[position]
+                val menuItem = menuList[position]
+                val uriString = menuItem.foodImage
+                val uri = Uri.parse(uriString)
+                allmenuFoodName.text = menuItem.foodName
+                allMenuFoodPrice.text = menuItem.foodPrice
+                Glide.with(context).load(uri).into(allMenuFoodImage)
+                allMenuFoodQuantity.text=quantity.toString()
                 minusButton.setOnClickListener() {
                     decreaseQuantity(position)
                 }
@@ -78,11 +90,11 @@ class AddItemAdapter(private val menuItemName: MutableList<String>, private val 
         }
 
         private fun deleteItem(position: Int) {
-            menuItemName.removeAt(position)
-            menuItemImage.removeAt(position)
-            menuItemPrice.removeAt(position)
+            menuList.removeAt(position)
+            menuList.removeAt(position)
+            menuList.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, menuItemName.size)
+            notifyItemRangeChanged(position, menuList.size)
         }
     }
 }
